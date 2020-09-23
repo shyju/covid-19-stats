@@ -25,6 +25,10 @@ function App() {
   const [casesType, setCasesType] = useState("cases");
 
   useEffect(() => {
+    document.title = "COVID-19-STATS";
+  }, []);
+
+  useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
       .then((response) => response.json())
       .then((data) => {
