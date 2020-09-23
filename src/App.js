@@ -32,7 +32,6 @@ function App() {
     fetch("https://disease.sh/v3/covid-19/all")
       .then((response) => response.json())
       .then((data) => {
-        console.log("All Data:", data);
         setCountryInfo(data);
       });
   }, []);
@@ -55,7 +54,6 @@ function App() {
   }, []);
 
   const onCountryChange = async (event) => {
-    console.log("CountryCode:", event.target.value);
     const countryCode = event.target.value;
     setCountry(countryCode);
 
