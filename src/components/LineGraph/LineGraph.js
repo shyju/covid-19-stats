@@ -89,8 +89,11 @@ function LineGraph({ casesType, ...props }) {
           data={{
             datasets: [
               {
-                backgroundColor: "rgba(204, 16, 52, 0.5)",
-                borderColor: "#CC1034",
+                backgroundColor:
+                  casesType === "recovered"
+                    ? "rgba(125,215,29, 0.5)"
+                    : "rgba(204, 16, 52, 0.5)",
+                borderColor: casesType === "recovered" ? "#7dd71d" : "#CC1034",
                 data: data,
               },
             ],
