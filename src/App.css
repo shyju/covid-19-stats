@@ -68,9 +68,15 @@ body {
   flex-grow: 1;
 }
 
-.app__rightCardContent > h3:nth-of-type(even) {
+.app__rightCardContent > h3 {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.app__rightCardContentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .app__stats {
