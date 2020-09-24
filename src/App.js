@@ -138,9 +138,7 @@ function App() {
           </CardContent>
         </Card>
       </div>
-      <div className="app__footer">
-        <p>&copy; 2020 Shyju S</p>
-      </div>
+      <div className="app__footer">{/* <p>&copy; 2020 Shyju S</p> */}</div>
     </div>
   );
 }
