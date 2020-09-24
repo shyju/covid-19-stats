@@ -23,6 +23,7 @@ function App() {
   const [mapZoom, setMapZoom] = useState(3);
   const [mapCountries, setMapCountries] = useState([]);
   const [casesType, setCasesType] = useState("cases");
+  const [sortType, setSortType] = useState("desc");
 
   useEffect(() => {
     document.title = "COVID-19-STATS";
@@ -44,14 +45,16 @@ function App() {
             name: country.country,
             value: country.countryInfo.iso2,
           }));
-          const sortedData = sortData(data);
+          const sortedData = sortData(data, sortType);
           setTableData(sortedData);
           setCountries(countries);
           setMapCountries(data);
         });
     };
     getCountries();
-  }, []);
+  }, [sortType]);
+
+  const onSortChange = (e) => setSortType(e.target.value);
 
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
@@ -131,7 +134,19 @@ function App() {
 
         <Card className="app__right">
           <CardContent className="app__rightCardContent">
-            <h3>Live cases by country</h3>
+            <div className="app__rightCardContentHeader">
+              <h3>Live cases by country</h3>
+              <FormControl className="app__dropdown">
+                <Select
+                  variant="outlined"
+                  value={sortType}
+                  onChange={onSortChange}
+                >
+                  <MenuItem value="desc">Desc</MenuItem>
+                  <MenuItem value="asc">Asc</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
             <Table countries={tableData}></Table>
             <h3>WorldWide new {casesType}</h3>
             <LineGraph className="app__graph" casesType={casesType} />
